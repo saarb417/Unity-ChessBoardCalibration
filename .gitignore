@@ -57,4 +57,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 # Directory named "python tools"
-!/python tools/
+!/PythonTools/
