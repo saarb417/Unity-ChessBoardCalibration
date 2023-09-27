@@ -1,0 +1,1 @@
+use "pip install -r requirements.txt" inside your venv on this directory

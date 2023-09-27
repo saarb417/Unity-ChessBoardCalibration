@@ -133,9 +133,10 @@ GameObject:
   m_Component:
   - component: {fileID: 386935652}
   - component: {fileID: 386935651}
-  - component: {fileID: 386935650}
-  - component: {fileID: 386935656}
   - component: {fileID: 386935657}
+  - component: {fileID: 386935656}
+  - component: {fileID: 386935658}
+  - component: {fileID: 386935659}
   m_Layer: 0
   m_Name: Cabin Camera
   m_TagString: MainCamera
@@ -143,18 +144,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &386935650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386935649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdc054d85645ac2459124d8d26b44acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!20 &386935651
 Camera:
   m_ObjectHideFlags: 0
@@ -205,14 +194,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386935649}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.96, y: 0.196, z: 15.52}
+  m_LocalRotation: {x: 0, y: 0.99963415, z: 0, w: 0.027049497}
+  m_LocalPosition: {x: 1, y: 0, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 176.9, z: 0}
 --- !u!114 &386935656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,11 +214,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdde2bb6a5d480542a4996eb5aaaa4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chessboardCenter: {fileID: 820638228}
-  movementSpeed: 1000
-  rotationSpeed: 2
-  waitTime: 0.01
-  maxDistanceFromCenter: 5
+  chessboardCenter: {fileID: 1608901855}
+  movementSpeed: 3.4028235e+38
+  rotationSpeed: 3.4028235e+38
+  maxDistanceFromCenter: 3
+  minDistanceFromCenter: 1
+  maxAngle: 50
+  waitTime: 0
+  roll: 37
+  yaw: 27
+  pitch: 28
 --- !u!114 &386935657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +257,45 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &386935658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386935649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7228693a5cff8a43835be81b0963e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageWidth: 1280
+  imageHeight: 720
+  captureFolderPath: C:\Users\saarb\UnityProjects\ChessboardCalibration\Recordings
+  imagesLimit: 200
+--- !u!114 &386935659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386935649}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a01f3347ee284408ab412483e26d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  captureCamera: {fileID: 0}
+  roll: 30
+  yaw: 30
+  pitch: 30
+  dist: 0.6
+  stages: 3
+  chessBoard: {fileID: 1608901855}
+  delayTime: 1
+  imageSavePath: C:\Users\saarb\OneDrive\Desktop\check
+  imageWidth: 1280
+  imageHeight: 720
 --- !u!1 &676750449
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,55 +411,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &820638226
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 820638228}
-  - component: {fileID: 820638227}
-  m_Layer: 0
-  m_Name: FocusPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &820638227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820638226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdde2bb6a5d480542a4996eb5aaaa4cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chessboardCenter: {fileID: 1608901855}
-  movementSpeed: 5
-  rotationSpeed: 2
-  waitTime: 2
-  maxDistanceFromCenter: 0.5
---- !u!4 &820638228
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820638226}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8675888, y: 0.6240767, z: 10.305061}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1608901855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6237085082050154893, guid: f8c489936df195e4c973a59d3fc0a670,
@@ -444,7 +428,7 @@ GameObject:
   - component: {fileID: 2065360461}
   - component: {fileID: 2065360462}
   m_Layer: 0
-  m_Name: VolumeHolder
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,17 +481,17 @@ PrefabInstance:
     - target: {fileID: 6237085082050154893, guid: f8c489936df195e4c973a59d3fc0a670,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6237085082050154893, guid: f8c489936df195e4c973a59d3fc0a670,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.17
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6237085082050154893, guid: f8c489936df195e4c973a59d3fc0a670,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15383132
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6237085082050154893, guid: f8c489936df195e4c973a59d3fc0a670,
         type: 3}
