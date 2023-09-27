@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.IO; // Add this for file operations.
 using UnityEngine;
 
 public class CameraImageCapture : MonoBehaviour
 {
+    public PythonScriptManagment pythonScriptManagment; // Reference to the PythonScriptManagment script.
+
     [Header("Image Capture")]
     public int imageWidth = 1920; // Width of the captured image.
     public int imageHeight = 1080; // Height of the captured image.
@@ -31,8 +34,18 @@ public class CameraImageCapture : MonoBehaviour
             File.Delete(file);
         }
 
+
+        StartCoroutine(RunCaptureAndPythonScript());
+
+    }
+
+    IEnumerator RunCaptureAndPythonScript()
+    {
         // Start capturing images every 2 frames.
-        StartCoroutine(CaptureImage());
+        yield return StartCoroutine(CaptureImage());
+
+        pythonScriptManagment.StartPythonScript();
+        pythonScriptManagment = null;
     }
 
     IEnumerator CaptureImage()
@@ -75,7 +88,6 @@ public class CameraImageCapture : MonoBehaviour
             if (frameCount >= imagesLimit)
             {
                 captureStopped = true; // Set the flag to stop capturing.
-                print("done");
             }
 
             // Wait for the next frame.

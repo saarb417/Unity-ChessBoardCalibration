@@ -10,11 +10,11 @@ import xml_output,transfer_ssh
 # Define the dimensions of checkerboard
 CHECKERBOARD = (4, 8)
 
-calib_path = 'C:\\Users\\saarb\\UnityProjects\\ChessboardCalibration\\Recordings\\'
+# calib_path = 'C:\\Users\\saarb\\UnityProjects\\ChessboardCalibration\\Recordings\\'
 # calib_path = 'C:\\Users\\saarb\\OneDrive\\Desktop\\saved\\'
 save_calib = False
 
-def get_distortion_coefficients(samples):
+def get_distortion_coefficients(calib_path,samples):
 
     # stop the iteration when specified
     # accuracy, epsilon, is reached or
@@ -42,8 +42,9 @@ def get_distortion_coefficients(samples):
     # jpg files alone
     all_images = os.listdir(calib_path)
 
+
     for i in range(samples):
-        image = cv2.imread(calib_path + all_images[i])
+        image = cv2.imread(os.path.join(calib_path, all_images[i]))
         grayColor = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         # Find the chess board corners
@@ -81,8 +82,8 @@ def get_distortion_coefficients(samples):
             image = cv2.drawChessboardCorners(image,
                                             CHECKERBOARD,
                                             corners2, ret)
-        else:
-            print(str(i+1))
+        # else:
+        #     print(str(i+1))
 
     h, w = image.shape[:2]
 
@@ -97,8 +98,7 @@ def get_distortion_coefficients(samples):
 
     print("relevant images: " + str(true_counter))
 
-    print(" RMS: ")
-    print(ret)
+    print(f" RMS: {ret}")
 
     print(" Camera matrix:")
     print(matrix)
@@ -114,16 +114,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Camera calibration and XML transfer.')
     parser.add_argument('--transfer_xml', action='store_true', help='Transfer XML file over SSH')
     parser.add_argument('--samples', type=int, default=50, help='Number of samples for calibration (default: 50)')
+    parser.add_argument('--remote_dir',type=str,default='/home/ception/GIT/ception/UnityVSlam/data/UP_FOV=70_new/', help='Save calibration images (default: False)')
+    parser.add_argument('--recording_dir', type=str, default='C:\\Users\\saarb\\UnityProjects\\ChessboardCalibration\\Recordings\\', help='Path to calibration images (default: C:\\Users\\saarb\\UnityProjects\\ChessboardCalibration\\Recordings\\)')
     args = parser.parse_args()
 
     transfer_xml_flag = args.transfer_xml
     samples = args.samples
+    calib_path = args.recording_dir
+    save_calib = args.remote_dir
     fps = 30
 
-    distortion, matrix, rms, res = get_distortion_coefficients(samples)
+    distortion, matrix, rms, res = get_distortion_coefficients(calib_path,samples)
 
     if transfer_xml_flag:
         xml_output.xml_creator(distortion, matrix, rms, res, fps)
-        transfer_ssh.transfer_xml()
-
+        transfer_ssh.transfer_xml(save_calib)
 

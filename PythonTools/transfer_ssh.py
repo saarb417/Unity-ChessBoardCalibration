@@ -1,8 +1,8 @@
 import paramiko
 import argparse
 
-recording_dir = 'C:\\Users\\saarb\\UnityProjects\\CamerasCalibration\\Recordings\\'
-remote_dir = '/home/ception/GIT/ception/UnityVSlam/data/UP_FOV=70_new/'
+# recording_dir = 'C:\\Users\\saarb\\UnityProjects\\CamerasCalibration\\Recordings\\'
+# remote_dir = '/home/ception/GIT/ception/UnityVSlam/data/UP_FOV=70_new/'
 
 
 # SSH connection information
@@ -12,7 +12,7 @@ username = 'ception'
 password = '1234'
 
 
-def transfer_xml():
+def transfer_xml(remote_dir):
     # Local path to the XML file you want to transfer
     local_file_path = 'unity_cam.xml'
 
@@ -47,7 +47,7 @@ def transfer_xml():
 
 
 
-def transfer_video_to_remote(videos):
+def transfer_video_to_remote(videos,recording_dir,remote_dir):
     try:
         # Create an SSH client
         ssh_client = paramiko.SSHClient()
@@ -86,11 +86,16 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Transfer files over SSH.')
     parser.add_argument('--transfer_videos', action='store_true', help='Transfer video files')
     parser.add_argument('--videos', nargs='+', help='List of video filenames to transfer')
+    parser.add_argument('--local_dir', type=str, default='.', help='Local directory containing the XML file (default: current directory)')
+    parser.add_argument('--remote_dir', type=str, default='.', help='Remote directory for the XML file (default: /home/ception/GIT/ception/UnityVSlam/data/UP_FOV=70_new/)')
     args = parser.parse_args()
+
 
     if args.transfer_videos:
         if args.videos:
             videos_to_transfer = args.videos
-            transfer_video_to_remote(videos_to_transfer)
+            recording_dir=args.local_dir
+            remote_dir=args.remote_dir
+            transfer_video_to_remote(videos_to_transfer,recording_dir,remote_dir)
         else:
             print("No video filenames provided. Please specify the --videos option.")

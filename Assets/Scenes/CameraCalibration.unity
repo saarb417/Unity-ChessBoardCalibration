@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7228693a5cff8a43835be81b0963e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pythonScriptManagment: {fileID: 2065360463}
   imageWidth: 1280
   imageHeight: 720
   captureFolderPath: C:\Users\saarb\UnityProjects\ChessboardCalibration\Recordings
@@ -427,6 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2065360461}
   - component: {fileID: 2065360462}
+  - component: {fileID: 2065360463}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -466,6 +468,22 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+--- !u!114 &2065360463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065360459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00143b1477c1e44c95db9b41a55e9a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  samples: 50
+  transferXML: 0
+  remoteDir: /home/ception/GIT/ception/UnityVSlam/data/UP_FOV=70_new/
+  recordingDir: C:\Users\saarb\UnityProjects\ChessboardCalibration\Recordings\
 --- !u!1001 &6237085083209643346
 PrefabInstance:
   m_ObjectHideFlags: 0
