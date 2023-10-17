@@ -160,7 +160,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 21.95, y: 9.35}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 6.6765924
+  m_FocalLength: 4.675
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -169,7 +169,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 70
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -217,9 +217,9 @@ MonoBehaviour:
   chessboardCenter: {fileID: 1608901855}
   movementSpeed: 3.4028235e+38
   rotationSpeed: 3.4028235e+38
-  maxDistanceFromCenter: 3
+  maxDistanceFromCenter: 1.5
   minDistanceFromCenter: 1
-  maxAngle: 50
+  maxAngle: 25
   waitTime: 0
   roll: 37
   yaw: 27
@@ -270,10 +270,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pythonScriptManagment: {fileID: 2065360463}
-  imageWidth: 1280
-  imageHeight: 720
+  imageWidth: 854
+  imageHeight: 480
   captureFolderPath: C:\Users\saarb\UnityProjects\ChessboardCalibration\Recordings
-  imagesLimit: 200
+  imagesLimit: 100
 --- !u!114 &386935659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,8 +481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   samples: 50
-  transferXML: 0
-  remoteDir: /home/ception/GIT/ception/UnityVSlam/data/UP_FOV=70_new/
+  transferXML: 1
+  remoteDir: /home/ception/GIT/ception/UnityVSlam/data/UP_LOW_RES_FOV=90/
   recordingDir: C:\Users\saarb\UnityProjects\ChessboardCalibration\Recordings\
 --- !u!1001 &6237085083209643346
 PrefabInstance:

@@ -1,1 +1,30 @@
-<camera_cfg><description>Unity Default Camera</description><type>camera</type><manufacturer>unity</manufacturer><model>camera</model><sn>x</sn><version>0.0.0</version><versionDate /><config><framerate_fps>30</framerate_fps><pixel_width_cols>1280</pixel_width_cols><pixel_height_rows>720</pixel_height_rows><setup>monocular</setup><lens_model>perspective</lens_model><color_order>RGB</color_order><intr_params><rms>0.6559362540644551</rms><fx>388.4264713436388</fx><fy>407.49548925741607</fy><cx>639.6385002287543</cx><cy>357.6491812123758</cy><k1>0.012228850191528766</k1><k2>-0.013150770608591413</k2><k3>0.003730881694634751</k3><p1>-0.0019554364094903414</p1><p2>0.0021846671346968253</p2></intr_params></config></camera_cfg>
+<?xml version="1.0" ?>
+<camera_cfg>
+  <description>Unity Default Camera</description>
+  <type>camera</type>
+  <manufacturer>unity</manufacturer>
+  <model>camera</model>
+  <sn>x</sn>
+  <version>0.0.0</version>
+  <versionDate/>
+  <config>
+    <framerate_fps>30</framerate_fps>
+    <pixel_width_cols>854</pixel_width_cols>
+    <pixel_height_rows>480</pixel_height_rows>
+    <setup>monocular</setup>
+    <lens_model>perspective</lens_model>
+    <color_order>RGB</color_order>
+    <intr_params>
+      <rms>0.8060078336138686</rms>
+      <fx>176.60455191428835</fx>
+      <fy>184.54268513424458</fy>
+      <cx>425.030800598631</cx>
+      <cy>239.7529614762931</cy>
+      <k1>0.007555437713378663</k1>
+      <k2>-0.0018837567519203197</k2>
+      <k3>0.00016192576982359606</k3>
+      <p1>0.0008891716124677213</p1>
+      <p2>-0.0017885823632150272</p2>
+    </intr_params>
+  </config>
+</camera_cfg>

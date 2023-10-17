@@ -84,18 +84,16 @@ def transfer_video_to_remote(videos,recording_dir,remote_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Transfer files over SSH.')
-    parser.add_argument('--transfer_videos', action='store_true', help='Transfer video files')
     parser.add_argument('--videos', nargs='+', help='List of video filenames to transfer')
-    parser.add_argument('--local_dir', type=str, default='.', help='Local directory containing the XML file (default: current directory)')
+    parser.add_argument('--local_dir', type=str, default='C:\\Users\\saarb\\UnityProjects\\CamerasCalibration\\Recordings\\', help='Local directory containing the XML file (default: current directory)')
     parser.add_argument('--remote_dir', type=str, default='.', help='Remote directory for the XML file (default: /home/ception/GIT/ception/UnityVSlam/data/UP_FOV=70_new/)')
     args = parser.parse_args()
 
 
-    if args.transfer_videos:
-        if args.videos:
-            videos_to_transfer = args.videos
-            recording_dir=args.local_dir
-            remote_dir=args.remote_dir
-            transfer_video_to_remote(videos_to_transfer,recording_dir,remote_dir)
-        else:
-            print("No video filenames provided. Please specify the --videos option.")
+    if args.videos:
+        videos_to_transfer = args.videos
+        recording_dir=args.local_dir
+        remote_dir=args.remote_dir
+        transfer_video_to_remote(videos_to_transfer,recording_dir,remote_dir)
+    else:
+        print("No video filenames provided. Please specify the --videos option.")

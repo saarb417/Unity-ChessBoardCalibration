@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
+import xml.dom.minidom as minidom
 
-def xml_creator(distortion,matrix,ret,image_resolution,fps):
+def xml_creator(distortion, matrix, ret, image_resolution, fps):
     # Create the root element
     root = ET.Element("camera_cfg")
 
@@ -84,8 +85,24 @@ def xml_creator(distortion,matrix,ret,image_resolution,fps):
     p2 = ET.SubElement(intr_params, "p2")
     p2.text = str(distortion[0][3])
 
-    # Create an ElementTree object and save to an XML file
+    # Create an ElementTree object
     tree = ET.ElementTree(root)
-    tree.write("unity_cam.xml")
 
-    print("XML file 'camera_config.xml' saved successfully.")
+    # Serialize the XML to a string and prettify it using minidom
+    xml_string = ET.tostring(root, encoding="utf-8").decode("utf-8")
+    pretty_xml = minidom.parseString(xml_string).toprettyxml(indent="  ")
+
+    # Write the prettified XML to a file
+    with open("unity_cam.xml", "w") as xml_file:
+        xml_file.write(pretty_xml)
+
+    print("XML file 'unity_cam.xml' saved successfully.")
+
+# Test the function
+distortion = [[0.1, 0.2, 0.3, 0.4, 0.5]]
+matrix = [[1000, 0, 500], [0, 1000, 300], [0, 0, 1]]
+ret = 0.01
+image_resolution = (720, 1280)
+fps = 30
+
+xml_creator(distortion, matrix, ret, image_resolution, fps)

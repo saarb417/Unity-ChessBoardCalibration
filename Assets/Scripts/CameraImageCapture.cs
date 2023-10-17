@@ -33,10 +33,8 @@ public class CameraImageCapture : MonoBehaviour
         {
             File.Delete(file);
         }
-
-
+        
         StartCoroutine(RunCaptureAndPythonScript());
-
     }
 
     IEnumerator RunCaptureAndPythonScript()

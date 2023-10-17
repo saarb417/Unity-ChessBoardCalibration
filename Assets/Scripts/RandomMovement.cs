@@ -10,15 +10,15 @@ public class RandomMovement : MonoBehaviour
     public float rotationSpeed = 1000000000000.0f;
 
     [Header("Movement Area Limitations")]
-    public float maxDistanceFromCenter = 3.25f;
-    public float minDistanceFromCenter = 2.0f;
-    public float maxAngle = 25.0f;
+    public float maxDistanceFromCenter = 3.0f;
+    public float minDistanceFromCenter = 1.0f;
+    public float maxAngle = 50.0f;
     public float waitTime = 0.0f;
 
     [Header("Tilt Limitations")]
-    public float roll = 5.0f;
-    public float yaw = 10f;
-    public float pitch = 10f;
+    public float roll = 37.0f;
+    public float yaw = 28f;
+    public float pitch = 27f;
     private float _roll, _yaw, _pitch;
 
     private Vector3 targetPosition;
